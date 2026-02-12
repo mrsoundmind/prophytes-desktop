@@ -1,0 +1,10 @@
+{
+    "name": "prophytes-desktop",
+    "buildCommand": "npm run build",
+    "framework": "nextjs",
+    "env": {
+        "USE_MOCK_DATA": "false",
+        "NEXT_PUBLIC_DEV_BYPASS_OTP": "false",
+        "NODE_ENV": "production"
+    }
+}
