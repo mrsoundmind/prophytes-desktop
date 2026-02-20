@@ -64,7 +64,7 @@ const Aluminai = ({
         // searchParams="United States"
         isDiffrent={false}
         placeholder="Select your country"
-        className="2xl:h-[60px] h-12 pr-10 pl-5 w-full border border-black/70   rounded-[10px] font-inter focus:outline-none placeholder:text-base placeholder:font-normal leading-6 cursor-pointer text-base   text-black/70 placeholder:text[#B2B2B2] bg-[#141616]  text-white placeholder:text-white"
+        className="2xl:h-[60px] min-h-[56px] pr-10 pl-5 w-full border border-black/70 rounded-[10px] font-inter focus:outline-none placeholder:text-base placeholder:font-normal leading-6 cursor-pointer text-base text-black/70 placeholder:text[#B2B2B2] bg-[#141616] text-white placeholder:text-white"
       />
       <StateSelect
         newState={newState?.name ? newState?.name : onboading?.state}
@@ -74,7 +74,7 @@ const Aluminai = ({
         clearField={clearField}
         setClearField={setClearField}
         searParams={newCountry?.id ? newCountry?.id : 23}
-        className="pr-10 pl-5 w-full 2xl:h-[60px] h-12 text-base  font-inter focus:outline-none placeholder:text-base placeholder:font-normal leading-5 cursor-pointer bg-[#141616] text-white placeholder:text-black/70   px-[30px] rounded-[10px] placeholder:text-white  sm:mt-0 mt-3"
+        className="pr-10 pl-5 w-full 2xl:h-[60px] min-h-[56px] text-base font-inter focus:outline-none placeholder:text-base placeholder:font-normal leading-5 cursor-pointer bg-[#141616] text-white placeholder:text-black/70 px-[30px] rounded-[10px] placeholder:text-white sm:mt-0 mt-4"
       />
       <CitySelect
         newCity={newCity?.name ? newCity?.name : onboading?.cityName}
@@ -83,8 +83,7 @@ const Aluminai = ({
         clearField={clearField}
         setClearField={setClearField}
         searParams={newState?.id}
-        className="pr-10 pl-5 w-full 2xl:h-[60px] h-12 text-base *:first-letter:
-          font-inter focus:outline-none  placeholder:font-normal leading-6 cursor-pointer bg-[#141616] placeholder:text-base  text-white placeholder:text-black/70   px-[30px] rounded-[10px] placeholder:text-white   mt-3"
+        className="pr-10 pl-5 w-full 2xl:h-[60px] min-h-[56px] text-base *:first-letter: font-inter focus:outline-none placeholder:font-normal leading-6 cursor-pointer bg-[#141616] placeholder:text-base text-white placeholder:text-black/70 px-[30px] rounded-[10px] placeholder:text-white mt-4"
       />
 
       {newState?.name && (
@@ -96,18 +95,18 @@ const Aluminai = ({
             organization={onboading?.organization}
             type="ALUMNI"
             searchParams={newState?.id}
-            className="w-full border-0 outline-none focus:outline-none 2xl:h-[60px] h-[50px]  pl-5 pr-8  rounded-[8px] text-base font-normal placeholder:text-base   text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
+            className="w-full border-0 outline-none focus:outline-none 2xl:h-[60px] min-h-[56px] pl-5 pr-8 rounded-[8px] text-base font-normal placeholder:text-base text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
           />
         </div>
       )}
-      <p className="flex sm:items-center  gap-2 text-sm font-normal leading-[22px] text-[#A2A2A8] mt-3">
+      <p className="flex sm:items-center gap-2 text-[13px] sm:text-sm font-normal leading-5 sm:leading-[22px] text-[#A2A2A8] mt-4">
         <span>
           <ShieldSvg className="mt-1 sm:mt-0" />
         </span>
         Your chapter is used to route you to the right community. Private by
         design.
       </p>
-      <div className="w-full mt-3 2xl:mt-10">
+      <div className="w-full mt-5 2xl:mt-10">
         <p className="flex  gap-3 md:text-lg text-[15px] md:leading-7 leading-6 font-normal text-[#E6E6E6]">
           <span>
             <LocationIconSvg />

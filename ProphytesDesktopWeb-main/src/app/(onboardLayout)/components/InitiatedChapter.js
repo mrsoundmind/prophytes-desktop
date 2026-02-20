@@ -42,9 +42,9 @@ const InitiatedChapter = () => {
       </div>
       <div className="2xl:p-12 sm:p-6 p-0 bg-black rounded-[8px]">
         {/* Form Content */}
-        <div className="mb-3 2xl:mb-10">
+        <div className="mb-4 2xl:mb-10">
           <h3 className="text-white font-montserrat">Find your chapter</h3>
-          <p className="sm:text-lg text-sm text-[#A2A2A8] font-normal sm:leading-7 leading-[22px] mt-3 ">
+          <p className="sm:text-lg text-[15px] text-[#A2A2A8] font-normal sm:leading-7 leading-6 mt-3">
             This is how we connect you to the right chapter and help you come
             back home.
           </p>
@@ -52,13 +52,13 @@ const InitiatedChapter = () => {
 
         <div className="">
           <div>
-            <h5 className="text-xl text-white leading-[30px] mb-3">
+            <h5 className="text-[22px] text-white sm:text-xl leading-[32px] mb-4">
               Where were you initiated?
             </h5>
             <Identity setDisabled={setDisabled} />
           </div>
 
-          <div className="pb-5 mt-5 2xl:mt-10 sm:pb-0">
+          <div className="pb-8 mt-6 2xl:mt-10 sm:pb-0">
             <NextPreviousButton
               fn={handleNext}
               backFn={handlePrev}

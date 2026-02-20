@@ -103,10 +103,10 @@ export default function MobileStapper({ disabled = true, haveValue = false }) {
 
       {/* Mobile Stepper */}
       <div className="flex items-center justify-center gap-4 mt-3 mb-3 2xl:mt-6 sm:hidden">
-        <div className="w-full rounded-xl bg-[#0f1111] shadow-[0px_6px_6px_0px_#14161678] border border-[#383838]">
+        <div className="w-full rounded-xl bg-[#0f1111] shadow-none border border-[#2a2c2c] sm:border-[#383838]">
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center justify-between w-full px-4 py-4 text-white"
+            className="flex items-center justify-between w-full px-4 py-4 text-white active:scale-[0.99] transition-transform"
           >
             <div className="flex items-center gap-3">
               <span className="flex items-center justify-center w-8 h-8 text-sm font-bold text-black bg-white rounded-md">
@@ -144,13 +144,13 @@ export default function MobileStapper({ disabled = true, haveValue = false }) {
                 return (
                   <li
                     key={step.name}
-                    className="flex items-center justify-between mb-4"
+                    className="flex items-center justify-between py-2 mb-2"
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={`size-8 rounded-md flex items-center justify-center text-sm transition ${isCompleted
-                            ? "bg-white text-black"
-                            : "bg-[#333333] text-[#A2A2A8]"
+                          ? "bg-white text-black"
+                          : "bg-[#333333] text-[#A2A2A8]"
                           }`}
                       >
                         {isCompleted ? <TikSvg /> : index + 1}

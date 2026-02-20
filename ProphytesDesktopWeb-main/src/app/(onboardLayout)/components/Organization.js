@@ -74,13 +74,13 @@ const Organization = () => {
         </div>
         <div className="2xl:p-12 sm:p-6 p-0 bg-black rounded-[8px]">
           <div>
-            <h3 className="mb-2 2xl:mb-6 font-montserrat">
+            <h3 className="mb-3 2xl:mb-6 font-montserrat">
               Select Your Organization
             </h3>
-            <h5 className="lg:text-lg text-sm text-[#E7E7EB] font-medium sm:leading-[26px] leading-[22px] 2xl:mb-3 mb-[6px]">
+            <h5 className="lg:text-lg text-[15px] sm:text-sm text-[#E7E7EB] font-medium sm:leading-[26px] leading-[24px] 2xl:mb-3 mb-3">
               Choose your Greek organization to begin verification.
             </h5>
-            <p className="sm:text-sm text-xs text-[#A2A2A8] font-normal sm:leading-[22px] leading-[18px] flex sm:items-center items-start  gap-2 2xl:mb-6 mb-3">
+            <p className="sm:text-sm text-[13px] text-[#A2A2A8] font-normal sm:leading-[22px] leading-5 flex sm:items-center items-start gap-2 2xl:mb-6 mb-5">
               <span className="inline-block">
                 <ShieldSvg className="mt-1 sm:mt-0" />
               </span>
@@ -88,13 +88,13 @@ const Organization = () => {
               until you&apos;re verified
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-2 ">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:gap-5">
             {loading ? (
               Array(9)
                 .fill(0)
                 .map((_, i) => <OrganaizationSkeleton key={i} />)
             ) : !organizations?.organizations || organizations.organizations.length === 0 ? (
-              <div className="col-span-3 flex flex-col items-center justify-center py-12 px-6 text-center">
+              <div className="col-span-2 sm:col-span-3 flex flex-col items-center justify-center py-12 px-6 text-center">
                 <p className="text-lg text-white mb-4">We couldn&apos;t load organizations right now.</p>
                 <button
                   onClick={() => refetch ? refetch() : window.location.reload()}
@@ -110,7 +110,7 @@ const Organization = () => {
                 return (
                   <div
                     key={item.id}
-                    className={`2xl:h-[126px] sm:h-[85px] h-[104px] 2xl:p-5 p-3 w-full  cursor-pointer rounded-[8px] relative `}
+                    className={`2xl:h-[126px] sm:h-[85px] min-h-[110px] 2xl:p-5 p-4 w-full cursor-pointer rounded-[8px] relative transition-transform active:scale-95`}
                     style={{
                       backgroundColor: `${item.id == 1 ? "#CFB53B" : `#${item.color}`
                         }`,

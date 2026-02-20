@@ -51,7 +51,7 @@ const UnderGrade = ({
         setNewSchool={setSelectedSchool}
         setClearField={setClearField}
         placeholder="Select your school (undergrad)"
-        className="w-full border-0 outline-none focus:outline-none sm:h-[60px] h-[50px]  pl-5  rounded-[8px] text-base font-normal placeholder:text-base  sm:pr-0 pr-[10px] text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
+        className="w-full border-0 outline-none focus:outline-none sm:h-[60px] min-h-[56px] pl-5 rounded-[8px] text-base font-normal placeholder:text-base sm:pr-0 pr-[10px] text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
       />
       <div className="mt-3" />
 
@@ -64,11 +64,11 @@ const UnderGrade = ({
           university={selectedSchool.name}
           setClearField={setClearField}
           clearField={clearField}
-          className="w-full border-0 outline-none focus:outline-none sm:h-[60px] h-[50px]  pl-5 pr-8  rounded-[8px] text-base font-normal placeholder:text-base  text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
+          className="w-full border-0 outline-none focus:outline-none sm:h-[60px] min-h-[56px] pl-5 pr-8 rounded-[8px] text-base font-normal placeholder:text-base text-white placeholder:text-white/70 cursor-pointer bg-[#141616]"
         />
       )}
 
-      <p className="flex sm:items-center  gap-2 text-sm font-normal leading-[22px] text-[#A2A2A8] mt-3">
+      <p className="flex sm:items-center gap-2 text-[13px] sm:text-sm font-normal leading-5 sm:leading-[22px] text-[#A2A2A8] mt-4">
         <span>
           <ShieldSvg className="mt-1 sm:mt-0" />
         </span>
@@ -76,7 +76,7 @@ const UnderGrade = ({
         design.
       </p>
 
-      <div className="w-full mt-3 2xl:mt-10">
+      <div className="w-full mt-5 2xl:mt-10">
         <button
           onClick={() => setOpen(!open)}
           className="flex items-center gap-2 md:text-lg text-[15px]  md:leading-7 leading-6  font-normal text-[#E6E6E6]"
