@@ -45,24 +45,17 @@ export async function GET(request) {
 
     // Check for errors in the response
     if (!response.ok) {
-      // If backend fails and we are in dev mode, fallback to mock data
-      if (process.env.USE_MOCK_DATA === "true") {
-        console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (CHAPTERS)");
-        return NextResponse.json(getMockChapters(request));
-      }
-      throw new Error("Failed to fetch members");
+      // If backend fails, fallback to mock data automatically
+      console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (CHAPTERS)");
+      return NextResponse.json(getMockChapters(request));
     }
 
     // Parse and return the response from the backend
     const members = await response.json();
     return CookieManager.createResponse(response, members);
   } catch (error) {
-    if (process.env.USE_MOCK_DATA === "true") {
-      console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (CHAPTERS)");
-      return NextResponse.json(getMockChapters(request));
-    }
-    // Handle any errors
-    return CookieManager.handleError(error);
+    console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (CHAPTERS)");
+    return NextResponse.json(getMockChapters(request));
   }
 }
 

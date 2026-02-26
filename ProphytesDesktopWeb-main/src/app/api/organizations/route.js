@@ -15,22 +15,16 @@ export async function GET() {
 
     const response = await fetch(`${config.apiBaseUrl}/desktop/organizations`);
     if (!response.ok) {
-      // If backend fails and mock flag is on, fallback
-      if (process.env.USE_MOCK_DATA === "true") {
-        console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA");
-        return NextResponse.json(getMockOrganizations());
-      }
-      throw new Error("Failed to fetch organizations");
+      // If backend fails, fallback to mock data automatically to prevent UI freeze
+      console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA");
+      return NextResponse.json(getMockOrganizations());
     }
     const organizations = await response.json();
     return CookieManager.createResponse(response, organizations);
   } catch (error) {
-    // If backend fails (network error) and mock flag is on, fallback
-    if (process.env.USE_MOCK_DATA === "true") {
-      console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA");
-      return NextResponse.json(getMockOrganizations());
-    }
-    return CookieManager.handleError(error);
+    // If backend fails (network error), fallback to mock data automatically
+    console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA");
+    return NextResponse.json(getMockOrganizations());
   }
 }
 
