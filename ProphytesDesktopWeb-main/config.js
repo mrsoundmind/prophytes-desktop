@@ -6,10 +6,9 @@ const config = {
 
   // API configurations
   apiBaseUrl:
-    typeof window === "undefined"
-      ? process.env.API_BASE_URL
-      : process.env.NEXT_PUBLIC_API_BASE_URL ||
-        "https://lovely-healthy-pangolin.ngrok-free.app/api-docs/",
+    process.env.API_BASE_URL ||
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    "https://lovely-healthy-pangolin.ngrok-free.app/api-docs",
 
   // Environment specific variables
   isProduction: process.env.NODE_ENV === "production",
