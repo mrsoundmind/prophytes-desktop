@@ -37,16 +37,8 @@ export default function Onboard() {
       const hasStarted = localStorage.getItem("onboardingStarted") === "true";
       const isSignedUp = !!verificationStatus;
 
-      console.log("🔍 WELCOME DEBUG:", {
-        isEmptyOnboarding,
-        currentPage,
-        hasStarted,
-        isSignedUp,
-        TRIGGER: (isEmptyOnboarding && !currentPage && !hasStarted && !isSignedUp)
-      });
 
       if (isEmptyOnboarding && !currentPage && !hasStarted && !isSignedUp) {
-        console.log("✅ Dispatching WELCOME");
         dispatch(setOnboardPage("welcome"));
         // DO NOT turn off checking here. Wait for the state to update to "welcome".
         // This keeps the screen black until the Welcome component is ready to render.

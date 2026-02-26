@@ -2,34 +2,18 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import MobileStapper from "./MobileStapper";
-import { SaveOnboadingData } from "@/src/utils/SaveOnboadingData";
+
 
 const PendingVerification = () => {
-    // Task 6.1: Fix verificationStatus null (Set Pending On Entry)
+    // Set verificationStatus to "pending" on entry if not yet set
     useEffect(() => {
         const currentStatus = localStorage.getItem("verificationStatus");
-
-        // Check if null, undefined, empty string, or "null"
         if (!currentStatus || currentStatus === "null" || currentStatus === "undefined") {
-            // Must NOT overwrite if value is already "approved" (covered by !currentStatus check, assuming "approved" is truthy)
-            // But explicitly: "approved" is truthy, so we only enter here if it's falsy or "null"/"undefined" strings.
-
             localStorage.setItem("verificationStatus", "pending");
-            SaveOnboadingData({ verificationStatus: "pending" });
         }
     }, []);
 
-    // Task 6.D: Dev toggle for approval (Double click "Pending Confirmation" to approve)
-    const handleDevApprove = () => {
-        if (process.env.NEXT_PUBLIC_DEV_BYPASS_OTP === "true") {
-            const confirmApprove = window.confirm("🛠️ DEV MODE: Force approve this user?");
-            if (confirmApprove) {
-                localStorage.setItem("verificationStatus", "approved");
-                // Force reload to trigger the gating logic in page.js
-                window.location.reload();
-            }
-        }
-    };
+
 
     return (
         <div className="2xl:p-12 sm:p-5 p-0 bg-black rounded-[8px]">
@@ -41,9 +25,7 @@ const PendingVerification = () => {
 
             <div className="flex flex-col items-center text-center mt-6 sm:mt-10">
                 <h3
-                    className="mb-3 2xl:mb-6 font-montserrat text-2xl font-bold text-white select-none"
-                    onDoubleClick={handleDevApprove}
-                    title={process.env.NEXT_PUBLIC_DEV_BYPASS_OTP === "true" ? "Dev: Double-click to force approve" : ""}
+                    className="mb-3 2xl:mb-6 font-montserrat text-2xl font-bold text-white"
                 >
                     Pending Verification
                 </h3>

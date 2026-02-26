@@ -140,7 +140,7 @@ const VerifyOTP = () => {
       <MobileStapper disabled={disabled} haveValue={haveValue} />
       <h3 className="mb-3 sm:mb-4 font-montserrat">Check your email</h3>
       <h5 className="sm:text-lg text-sm text-[#A2A2A8] font-medium sm:leading-[26px] leading-[18px] mb-3">
-        We sent a 6-digit code to dddd. This secures your Prophytes #.
+        We sent a 6-digit code to {onboading?.email || localStorage.getItem("email") || "your email"}. This secures your Prophytes #.
       </h5>
       <div className="mt-4 2xl:mt-8">
         <div className="2xl:p-12 p-6 bg-black rounded-[16px] border border-[#383838]">

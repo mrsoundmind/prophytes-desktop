@@ -58,31 +58,8 @@ const EmailVefiry = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // DEV ONLY — bypass email sending for local testing
-    if (process.env.NEXT_PUBLIC_DEV_BYPASS_OTP === "true") {
-      console.log("🛠️ [DEV MODE] Bypassing OTP API call");
-      // Simulate success delay
-      setTimeout(() => {
-        // Task 5.B.1: Use production-like message or suppress specific "DEV MODE" alert if preferred.
-        // Keeping it generic or reusing the standard success message.
-        SuccessAlert("OTP sent successfully");
-        localStorage.setItem("email", email);
-        SaveOnboadingData({ email });
-        // Set mock OTP for next step verification (if needed by next step bypass)
-        localStorage.setItem("devOtpCode", "123456");
-
-        // Advance to next step
-        dispatch(setOnboardPage("verify-code"));
-      }, 500);
-      return;
-    }
-
-    // if (isUndergraduate && !isEduEmail) {
-    //   ErrorAlert("Undergraduate users must use a .edu email address");
-    //   return;
-    // }
-
     fetchData({ email });
+
   };
 
   useEffect(() => {
