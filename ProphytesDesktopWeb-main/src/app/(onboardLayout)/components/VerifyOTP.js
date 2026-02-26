@@ -92,31 +92,7 @@ const VerifyOTP = () => {
       data: { ...onboardingData }, // Nest onboardingData under 'data'
     };
 
-    // DEV ONLY — bypass OTP verification for local testing
-    if (process.env.NEXT_PUBLIC_DEV_BYPASS_OTP === "true") {
-      console.log("🛠️ [DEV MODE] Bypassing OTP Verification");
-
-      const devOtp = localStorage.getItem("devOtpCode") || "123456";
-
-      if (otpValue === devOtp || otpValue === "123456") {
-        // Simulate Success
-        setTimeout(() => {
-          // Task 5.C.1: Neutral success message (no "DEV" mention)
-          SuccessAlert("Code confirmed");
-          // Mock token if needed, or just proceed
-          localStorage.setItem("token", "mock-dev-token-123");
-          SaveOnboadingData({ isVerified: true });
-          setDisabled(false);
-          dispatch(setOnboardPage("pending-verification"));
-        }, 500);
-        return;
-      } else {
-        ErrorAlert("Invalid code. Please try again.");
-        return;
-      }
-    }
-
-    const res = await fetchData(finalPayload);
+    await fetchData(finalPayload);
   };
   const handlereSend = () => {
     sendCodeReq({ email: localStorage.getItem("email") });
