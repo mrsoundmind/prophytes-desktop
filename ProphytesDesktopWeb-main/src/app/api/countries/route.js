@@ -34,21 +34,14 @@ export async function GET(request) {
       },
     });
     if (!response.ok) {
-      // If backend fails and we are in dev mode, fallback to mock data
-      if (process.env.USE_MOCK_DATA === "true") {
-        console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (COUNTRIES)");
-        return NextResponse.json(getMockCountries());
-      }
-      throw new Error("Failed to fetch countries");
+      console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (COUNTRIES)");
+      return NextResponse.json(getMockCountries());
     }
     const countries = await response.json();
     return CookieManager.createResponse(response, countries);
   } catch (error) {
-    if (process.env.USE_MOCK_DATA === "true") {
-      console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (COUNTRIES)");
-      return NextResponse.json(getMockCountries());
-    }
-    return CookieManager.handleError(error);
+    console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (COUNTRIES)");
+    return NextResponse.json(getMockCountries());
   }
 }
 

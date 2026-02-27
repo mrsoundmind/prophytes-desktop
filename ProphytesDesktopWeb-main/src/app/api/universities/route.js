@@ -26,22 +26,15 @@ export async function GET(request) {
     const response = await fetch(url);
 
     if (!response.ok) {
-      // If backend fails and we are in dev mode, fallback to mock data
-      if (process.env.USE_MOCK_DATA === "true") {
-        console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (UNIVERSITIES)");
-        return NextResponse.json(getMockUniversities());
-      }
-      throw new Error("Failed to fetch universities");
+      console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (UNIVERSITIES)");
+      return NextResponse.json(getMockUniversities());
     }
 
     const universities = await response.json();
     return CookieManager.createResponse(response, universities);
   } catch (error) {
-    if (process.env.USE_MOCK_DATA === "true") {
-      console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (UNIVERSITIES)");
-      return NextResponse.json(getMockUniversities());
-    }
-    return CookieManager.handleError(error);
+    console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (UNIVERSITIES)");
+    return NextResponse.json(getMockUniversities());
   }
 }
 

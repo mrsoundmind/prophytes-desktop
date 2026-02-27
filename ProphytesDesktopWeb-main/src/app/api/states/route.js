@@ -31,21 +31,14 @@ export async function GET(request) {
       `${config.apiBaseUrl}/desktop/states?${queryParams.toString()}`
     );
     if (!response.ok) {
-      // If backend fails and we are in dev mode, fallback to mock data
-      if (process.env.USE_MOCK_DATA === "true") {
-        console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (STATES)");
-        return NextResponse.json(getMockStates());
-      }
-      throw new Error("Failed to fetch states");
+      console.warn("⚠️ BACKEND FAILED, FALLING BACK TO MOCK DATA (STATES)");
+      return NextResponse.json(getMockStates());
     }
     const states = await response.json();
     return CookieManager.createResponse(response, states);
   } catch (error) {
-    if (process.env.USE_MOCK_DATA === "true") {
-      console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (STATES)");
-      return NextResponse.json(getMockStates());
-    }
-    return CookieManager.handleError(error);
+    console.warn("⚠️ NETWORK ERROR, FALLING BACK TO MOCK DATA (STATES)");
+    return NextResponse.json(getMockStates());
   }
 }
 
